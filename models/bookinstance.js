@@ -11,11 +11,11 @@ var BookInstanceSchema = new Schema({
     due_date: {type: Date, default: Date.now}
 });
 
-BookInstanceSchema.virtual('url').get(() => {
+BookInstanceSchema.virtual('url').get(function(){
     return '/catalog/bookInstance/' + this._id;
 });
 
-BookInstanceSchema.virtual('due_back_formatted').get(()=>{
+BookInstanceSchema.virtual('due_back_formatted').get(function(){
     return moment(this.due_date).format('MMMM Do, YYYY')
 })
 
